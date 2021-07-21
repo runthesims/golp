@@ -24,6 +24,10 @@ package golp
 #cgo darwin CFLAGS: -I/opt/local/include/lpsolve
 #cgo darwin LDFLAGS: -L/opt/local/lib -llpsolve55
 
+// For Linux, assume LPSolve bundled in local lpsolve directory
+#cgo linux CFLAGS: -I/go/src/github.com/runthesims/golp/lpsolve
+#cgo linux LDFLAGS: -L/go/src/github.com/runthesims/golp/lpsolve -llpsolve55 -Wl,-rpath=/go/src/github.com/runthesims/golp/lpsolve
+
 #include "lp_lib.h"
 #include <stdlib.h>
 #include "stringbuilder.h"
